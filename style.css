@@ -1,0 +1,508 @@
+/* =============================================
+   style.css — Portfólio Ana Silva
+   Organização:
+   1. CSS Reset
+   2. Variáveis (Custom Properties)
+   3. Base / Tipografia
+   4. Layout helpers
+   5. Header & Nav
+   6. Hero
+   7. Seção Sobre
+   8. Seção Projetos
+   9. Seção Contato / Formulário
+   10. Footer
+   11. Pseudo-classes & Pseudo-elementos
+   12. Responsivo
+============================================= */
+
+
+/* ─── 1. CSS RESET ─────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+/* ─── 2. VARIÁVEIS ─────────────────────────── */
+:root {
+  /* cores */
+  --color-bg:       #0d0d0d;
+  --color-surface:  #141414;
+  --color-border:   #2a2a2a;
+  --color-text:     #e8e2d9;
+  --color-muted:    #6b6560;
+  --color-accent:   #d4a853;
+  --color-accent2:  #8b5e3c;
+
+  /* tipografia */
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body:    'Trebuchet MS', 'Segoe UI', sans-serif;
+
+  /* espaçamentos */
+  --space-xs:  8px;
+  --space-sm:  16px;
+  --space-md:  32px;
+  --space-lg:  64px;
+  --space-xl:  96px;
+
+  /* bordas */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+}
+
+
+/* ─── 3. BASE / TIPOGRAFIA ─────────────────── */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2.4rem, 7vw, 5rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.6rem); margin-bottom: var(--space-md); }
+h3 { font-size: 1.2rem; margin-bottom: var(--space-xs); }
+
+p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin-bottom: var(--space-sm);
+}
+
+em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+
+/* ─── 4. LAYOUT HELPERS ────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+section {
+  padding: var(--space-xl) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+/* ─── 5. HEADER & NAV ──────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(13, 13, 13, 0.92);
+  border-bottom: 1px solid var(--color-border);
+
+  /* box-model: padding interno, sem margin */
+  padding: 0 var(--space-md);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: var(--space-md);
+}
+
+/* seletor de descendente */
+.site-nav ul a {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: var(--space-xs) 0;
+
+  /* pseudo-elemento: underline animado */
+  position: relative;
+}
+
+
+/* ─── 6. HERO ──────────────────────────────── */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* pseudo-elemento: decoração de fundo */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 60% at 80% 40%,
+    rgba(212, 168, 83, 0.07) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent2);
+  border-radius: var(--radius-sm);
+
+  /* box-model: padding + border */
+  padding: 4px 12px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  max-width: 760px;
+  margin-bottom: var(--space-sm);
+}
+
+.hero-sub {
+  max-width: 460px;
+  font-size: 1rem;
+  margin-bottom: var(--space-md);
+}
+
+/* BOTÃO */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-accent);
+  color: #0d0d0d;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+
+  /* box-model: padding define o tamanho interno */
+  padding: 14px 32px;
+  margin-top: var(--space-xs);
+}
+
+
+/* ─── 7. SEÇÃO SOBRE ───────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.about-text h2 {
+  margin-bottom: var(--space-sm);
+}
+
+/* seletor de adjacente */
+.about-text h2 + p {
+  color: var(--color-muted);
+}
+
+.about-skills h3 {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* seletor de filho */
+.skills-list > li {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+
+  /* box-model */
+  padding: 12px 16px;
+}
+
+/* pseudo-elemento ::before em cada skill */
+.skills-list > li::before {
+  content: '▸ ';
+  color: var(--color-accent);
+  font-size: 10px;
+}
+
+
+/* ─── 8. SEÇÃO PROJETOS ────────────────────── */
+.section-projects {
+  background-color: var(--color-surface);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+
+.card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 160px;
+  background-color: #1e1e1e;
+  background-image: linear-gradient(135deg, #1a1a1a 0%, #2a2319 100%);
+}
+
+.card-img--alt {
+  background-image: linear-gradient(135deg, #1a1a1a 0%, #19222a 100%);
+}
+
+.card-img--alt2 {
+  background-image: linear-gradient(135deg, #1a1a1a 0%, #1f2a19 100%);
+}
+
+.card-body {
+  /* box-model: padding ao redor do conteúdo */
+  padding: var(--space-sm);
+}
+
+.card-body p {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+
+/* ─── 9. SEÇÃO CONTATO ─────────────────────── */
+.contact-form {
+  max-width: 620px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--space-sm);
+}
+
+label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* seletor de atributo */
+input[type="text"],
+input[type="email"],
+textarea {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  outline: none;
+
+  /* box-model */
+  padding: 12px 14px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-success {
+  display: none;
+  color: var(--color-accent);
+  font-size: 14px;
+  margin-top: var(--space-xs);
+}
+
+
+/* ─── 10. FOOTER ───────────────────────────── */
+.site-footer {
+  padding: var(--space-md) 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-accent);
+}
+
+.footer-nav {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.footer-nav a {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+
+/* ─── 11. PSEUDO-CLASSES & PSEUDO-ELEMENTOS ── */
+
+/* :hover no botão */
+.btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+/* :active no botão */
+.btn:active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* :hover no card */
+.card:hover {
+  border-color: var(--color-accent2);
+  transform: translateY(-4px);
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+/* :focus nos inputs */
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--color-accent2);
+  transition: border-color 0.2s;
+}
+
+/* :hover nos links da nav — underline via ::after */
+.site-nav ul a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+  transition: width 0.25s ease;
+}
+
+.site-nav ul a:hover {
+  color: var(--color-accent);
+}
+
+.site-nav ul a:hover::after {
+  width: 100%;
+}
+
+/* :hover nos links do footer */
+.footer-nav a:hover {
+  color: var(--color-accent);
+  transition: color 0.2s;
+}
+
+/* :nth-child — destaca primeiro card */
+.card:nth-child(1) {
+  border-color: var(--color-accent2);
+}
+
+/* ::placeholder */
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-border);
+  font-size: 13px;
+}
+
+/* ::selection — cor ao selecionar texto */
+::selection {
+  background-color: var(--color-accent2);
+  color: var(--color-text);
+}
+
+
+/* ─── 12. RESPONSIVO ────────────────────────── */
+@media (max-width: 768px) {
+  .about-grid,
+  .projects-grid,
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .site-nav ul {
+    gap: var(--space-sm);
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
