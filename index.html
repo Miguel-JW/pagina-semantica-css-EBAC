@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio | Ana Silva</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Ana Silva</div>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <span class="tag">Desenvolvedora Web</span>
+        <h1>Criando <em>experiências</em> digitais</h1>
+        <p class="hero-sub">Olá! Sou estudante de ADS apaixonada por transformar ideias em interfaces funcionais e bonitas.</p>
+        <a href="#contato" class="btn">Entre em contato</a>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="section-about" id="sobre">
+      <div class="container about-grid">
+
+        <article class="about-text">
+          <h2>Quem sou eu</h2>
+          <p>Tenho 20 anos e estou cursando Análise e Desenvolvimento de Sistemas. Acredito que boas interfaces mudam a forma como as pessoas se relacionam com a tecnologia.</p>
+          <p>Estou aprendendo HTML, CSS, JavaScript e Java com Spring Boot, buscando sempre unir lógica e criatividade.</p>
+        </article>
+
+        <aside class="about-skills">
+          <h3>Habilidades</h3>
+          <ul class="skills-list">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>Java</li>
+            <li>Spring Boot</li>
+            <li>Git &amp; GitHub</li>
+          </ul>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section class="section-projects" id="projetos">
+      <div class="container">
+        <h2>Projetos</h2>
+        <div class="projects-grid">
+
+          <article class="card">
+            <div class="card-img"></div>
+            <div class="card-body">
+              <h3>Nome API</h3>
+              <p>API REST com Spring Boot, MySQL e Docker — CRUD completo testado no Postman.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-img card-img--alt"></div>
+            <div class="card-body">
+              <h3>Microsserviços Kafka</h3>
+              <p>Sistema de pedidos com 3 microsserviços Spring Boot, Kafka e MongoDB.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-img card-img--alt2"></div>
+            <div class="card-body">
+              <h3>Página Pessoal</h3>
+              <p>Primeiro projeto HTML/CSS com estrutura semântica publicado no GitHub Pages.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="section-contact" id="contato">
+      <div class="container">
+        <h2>Contato</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn">Enviar mensagem</button>
+          <p class="form-success" id="formSuccess">✓ Mensagem enviada com sucesso!</p>
+
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">Ana Silva</span>
+      <p>&copy; 2025 — Todos os direitos reservados.</p>
+      <nav class="footer-nav">
+        <a href="https://github.com/" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('formSuccess').style.display = 'block';
+      e.target.reset();
+      setTimeout(() => { document.getElementById('formSuccess').style.display = 'none'; }, 3500);
+    }
+  </script>
+
+</body>
+</html>
